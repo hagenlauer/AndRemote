@@ -9,25 +9,32 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_weight="0.82"
+        android:textColor="@color/green"
         android:text="@string/hello" />
 
     <LinearLayout
+        
         android:layout_width="match_parent"
         android:layout_height="wrap_content" >
 
         <Button
             android:id="@+id/button1"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="40dp"
             android:layout_weight="0.53"
-            android:text="LeftClick" />
+            android:background="#000"
+            android:text="LeftClick"
+            android:textColor="@color/green" />
 
         <Button
             android:id="@+id/button2"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="40dp"
             android:layout_weight="0.50"
-            android:text="RightClick" />
+            android:background="#000"
+            android:text="RightClick"
+            android:textColor="@color/green" />
+
     </LinearLayout>
 
     <LinearLayout

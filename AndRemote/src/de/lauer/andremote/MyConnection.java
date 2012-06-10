@@ -48,7 +48,7 @@ public class MyConnection {
             connection = new Socket(host, port);
             return true;
         } catch(IOException e) {
-            Log.i("wifi", "cannot open connection: " + e.toString());
+            //Log.i("wifi", "cannot open connection: " + e.toString());
         }
         return false;
     }
@@ -60,7 +60,7 @@ public class MyConnection {
         	oos.close();
             connection.close();
         } catch (IOException e) {
-            Log.i(tag,"Unable to close connection: " + e.toString());
+            //Log.i(tag,"Unable to close connection: " + e.toString());
         }
     }
 
@@ -76,11 +76,12 @@ public class MyConnection {
         try{
         	this.oos.writeObject(command);
         	
-        	
             //this.toServer.writeBytes(command+this.CRLF);
         	//Toast.makeText(ctx, reply, Toast.LENGTH_SHORT);
         }catch (Exception e) {
-        	Log.e(tag, "toast exception",e);
+        	((Activity)ctx).setResult(10);
+        	((Activity)ctx).finish();
+        	//Log.e(tag, "",e);
 		}
     }
 }
