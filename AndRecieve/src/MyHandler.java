@@ -13,22 +13,25 @@ import java.io.ObjectInputStream;
 import java.io.OutputStream;
 import java.net.Socket;
 
+import javax.swing.JDialog;
+import javax.swing.JOptionPane;
+
 public final class MyHandler implements Runnable {
 	//
 	final static String CRLF = "\r\n";
 	Socket socket;
 	Robot robot;
 
-	
+	private boolean masterFlag = false;
 	/*
 	 * keep multiple sceens im mind 
 	 */
-	
+
 	Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
-	
+
 	int maxx = dim.width;
 	int maxy = dim.height;
-	
+
 	Point mouse;
 
 	String [] split;
@@ -96,43 +99,55 @@ public final class MyHandler implements Runnable {
 				break;
 			}
 
-			switch (requestLine) {
-			case "ohi":
-				break;
-			case "imback":
-				break;
-			case "left":
-				robot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
-				robot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
-				break;
-			case "right":
-				robot.mousePress(InputEvent.BUTTON3_DOWN_MASK);
-				robot.mouseRelease(InputEvent.BUTTON3_DOWN_MASK);
-				break;
+			if(requestLine.startsWith("pass:")){
+				String pass = requestLine.substring(5, requestLine.length());
+				//System.out.println("passphrase: "+pass);
+				if(pass.equals(AndRecieve.getPass())){
+					System.out.println("Welcome, Master!");
+					Runtime.getRuntime().exec("say \"Welcome Mr. Lauer!\"");
+					//JOptionPane.showMessageDialog(null, "Nice to see you, Sir!", "Welcome Hagen!", JOptionPane.INFORMATION_MESSAGE,null);
+					masterFlag = true;
+				}
+			}else{
 
-			default:
-				//System.out.println(requestLine);
+				switch (requestLine) {
+				case "ohi":
+					break;
+				case "imback":
+					break;
+				case "left":
+					robot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+					robot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+					break;
+				case "right":
+					robot.mousePress(InputEvent.BUTTON3_DOWN_MASK);
+					robot.mouseRelease(InputEvent.BUTTON3_DOWN_MASK);
+					break;
 
-				split = requestLine.split(":");
-				int x = Integer.valueOf(split[0]);
-				int y = Integer.valueOf(split[1]);
-				
-				mouse = MouseInfo.getPointerInfo().getLocation();
-				
-				//implement the corner stuff here:
-				moveMouse(x, y, mouse);
-//				if(mouse.y > 10 && mouse.x > 10 && mouse.x < maxx-10 && mouse.y < maxy-10){
-//					robot.mouseMove(mouse.x + x, mouse.y + y);
-//				}
-				break;
+				default:
+					//System.out.println(requestLine);
+
+					split = requestLine.split(":");
+					int x = Integer.valueOf(split[0]);
+					int y = Integer.valueOf(split[1]);
+
+					mouse = MouseInfo.getPointerInfo().getLocation();
+
+					//implement the corner stuff here:
+					moveMouse(x, y, mouse);
+					//				if(mouse.y > 10 && mouse.x > 10 && mouse.x < maxx-10 && mouse.y < maxy-10){
+					//					robot.mouseMove(mouse.x + x, mouse.y + y);
+					//				}
+					break;
+				}
 			}
 		}
 	}
 	private boolean moveMouse(int x, int y, Point mouse){
-		
+
 		int resx = mouse.x+x;
 		int resy = mouse.y+y;
-		
+
 		if(resx <= 0){
 			robot.mouseMove(maxx-5, resy);
 			return true;

@@ -22,13 +22,11 @@ public class Start extends Activity{
 	
 	public void connect(View view){
 		String addr = ip.getText().toString(); //i wont check anything here.
-		
+		String pass = whatever.getText().toString();
 		Intent intent = new Intent(this,AndRemoteActivity.class);
 		intent.putExtra("addr", addr);
+		intent.putExtra("pass", pass);
 		startActivityForResult(intent, 42);
-		
-		
-		
 //		Toast.makeText(this, "works", Toast.LENGTH_SHORT).show();
 	}
 	protected void onActivityResult(int requestCode, int resultCode, Intent data){

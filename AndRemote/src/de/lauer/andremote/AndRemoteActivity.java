@@ -32,7 +32,8 @@ public class AndRemoteActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.main);
 
-		String addr = (String)getIntent().getSerializableExtra("addr");
+		String addr = getIntent().getStringExtra("addr");
+		String pass = getIntent().getStringExtra("pass");
 		
 		ctx = this;
 		leftClick = (Button) findViewById(R.id.button1);
@@ -44,6 +45,7 @@ public class AndRemoteActivity extends Activity {
 			if(con == null){
 				con = new MyConnection(this,addr, 3005);
 				con.sendCommand("ohi");
+				if(pass.length()>0)con.sendCommand("pass:"+pass);
 			}else{
 				//con.sendCommand("imback");
 			}

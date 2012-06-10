@@ -8,6 +8,8 @@ public class AndRecieve {
 	ServerSocket server=null;
 	Socket client=null;
 
+	private static final String pass = "iamironman";
+	
 	private static Object lock = new Object();
 
 	private static int connectioncount = 0;
@@ -22,7 +24,11 @@ public class AndRecieve {
 		}
 		return true;
 	}
-
+	
+	public static String getPass(){
+		return pass;
+	}
+	
 	public boolean listenSocket(){
 		try{
 			client = server.accept();
@@ -59,7 +65,7 @@ public class AndRecieve {
 			InetAddress local = InetAddress.getLocalHost();
 			JOptionPane.showMessageDialog(null, local.getHostAddress(), "Your IP Adress, sir", JOptionPane.INFORMATION_MESSAGE,null);
 		} catch (Exception e) {
-			JOptionPane.showMessageDialog(null, "Yes you did, not me.", "You messed something up", JOptionPane.INFORMATION_MESSAGE,null);
+			//JOptionPane.showMessageDialog(null, "Yes, you did, not me.", "You messed something up", JOptionPane.INFORMATION_MESSAGE,null);
 		}
 		//establish the listen socket
 		mySock.createSocket(3005);
@@ -67,7 +73,7 @@ public class AndRecieve {
 
 			if(mySock.listenSocket() && readConnectionCount() == 0) { //sync problem
 
-				if(JOptionPane.showConfirmDialog(null, "Would you like to accept "+mySock.client.getInetAddress()+" ?") == JOptionPane.OK_OPTION){
+//				if(JOptionPane.showConfirmDialog(null, "Would you like to accept "+mySock.client.getInetAddress()+" ?") == JOptionPane.OK_OPTION || 1==1){
 
 					incrementConnectionCount();
 
@@ -81,9 +87,9 @@ public class AndRecieve {
 
 					// Start the thread.
 					thread.start();
-				}else{
-					System.out.println("conncetion refused");
-				}
+//				}else{
+//					System.out.println("conncetion refused");
+//				}
 			}
 
 		}
