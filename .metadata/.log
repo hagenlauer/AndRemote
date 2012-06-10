@@ -1,0 +1,124 @@
+!SESSION 2012-06-10 14:42:10.664 -----------------------------------------------
+eclipse.buildId=M20120208-0800
+java.version=1.6.0_31
+java.vendor=Apple Inc.
+BootLoader constants: OS=macosx, ARCH=x86_64, WS=cocoa, NL=en_US
+Framework arguments:  -keyring /Users/hagenlauer/.eclipse_keyring -showlocation
+Command-line arguments:  -os macosx -ws cocoa -arch x86_64 -keyring /Users/hagenlauer/.eclipse_keyring -showlocation
+
+!ENTRY org.eclipse.core.net 1 0 2012-06-10 14:42:24.248
+!MESSAGE System property http.nonProxyHosts has been set to local|*.local|169.254/16|*.169.254/16 by an external source. This value will be overwritten using the values from the preferences
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2012-06-10 14:42:47.855
+!MESSAGE 
+!STACK 1
+org.eclipse.core.internal.resources.ResourceException: Resource '/AndRemote/res' does not exist.
+	at org.eclipse.core.internal.resources.Resource.checkExists(Resource.java:320)
+	at org.eclipse.core.internal.resources.Resource.checkAccessible(Resource.java:194)
+	at org.eclipse.core.internal.resources.Container.members(Container.java:266)
+	at org.eclipse.core.internal.resources.Container.members(Container.java:249)
+	at com.android.ide.eclipse.adt.internal.sdk.Sdk$6.run(Sdk.java:1302)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+!SUBENTRY 1 org.eclipse.core.resources 4 368 2012-06-10 14:42:47.856
+!MESSAGE Resource '/AndRemote/res' does not exist.
+
+!ENTRY org.eclipse.ui 4 4 2012-06-10 14:43:28.323
+!MESSAGE Invalid preference page path: XML Syntax
+!SESSION 2012-06-10 14:48:16.272 -----------------------------------------------
+eclipse.buildId=M20120208-0800
+java.version=1.6.0_31
+java.vendor=Apple Inc.
+BootLoader constants: OS=macosx, ARCH=x86_64, WS=cocoa, NL=en_US
+Framework arguments:  -keyring /Users/hagenlauer/.eclipse_keyring -showlocation
+Command-line arguments:  -os macosx -ws cocoa -arch x86_64 -keyring /Users/hagenlauer/.eclipse_keyring -showlocation
+
+!ENTRY org.eclipse.core.net 1 0 2012-06-10 14:48:26.852
+!MESSAGE System property http.nonProxyHosts has been set to local|*.local|169.254/16|*.169.254/16 by an external source. This value will be overwritten using the values from the preferences
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2012-06-10 14:48:52.602
+!MESSAGE 
+!STACK 1
+org.eclipse.core.internal.resources.ResourceException: Resource '/AndRemote/res' does not exist.
+	at org.eclipse.core.internal.resources.Resource.checkExists(Resource.java:320)
+	at org.eclipse.core.internal.resources.Resource.checkAccessible(Resource.java:194)
+	at org.eclipse.core.internal.resources.Container.members(Container.java:266)
+	at org.eclipse.core.internal.resources.Container.members(Container.java:249)
+	at com.android.ide.eclipse.adt.internal.sdk.Sdk$6.run(Sdk.java:1302)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+!SUBENTRY 1 org.eclipse.core.resources 4 368 2012-06-10 14:48:52.602
+!MESSAGE Resource '/AndRemote/res' does not exist.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2012-06-10 14:48:53.673
+!MESSAGE loadAndParseRClass failed to find class de.lauer.andremote.R
+!STACK 0
+java.lang.UnsupportedClassVersionError: Unsupported major.minor version 51.0
+	at java.lang.ClassLoader.defineClass1(Native Method)
+	at java.lang.ClassLoader.defineClassCond(ClassLoader.java:631)
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:615)
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:465)
+	at com.android.ide.eclipse.adt.internal.resources.manager.ProjectClassLoader.loadFromProject(ProjectClassLoader.java:147)
+	at com.android.ide.eclipse.adt.internal.resources.manager.ProjectClassLoader.findClass(ProjectClassLoader.java:69)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:306)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:247)
+	at com.android.ide.eclipse.adt.internal.resources.manager.CompiledResourcesMonitor.loadAndParseRClass(CompiledResourcesMonitor.java:208)
+	at com.android.ide.eclipse.adt.internal.resources.manager.CompiledResourcesMonitor.fileChanged(CompiledResourcesMonitor.java:99)
+	at com.android.ide.eclipse.adt.internal.resources.manager.GlobalProjectMonitor$DeltaVisitor.visit(GlobalProjectMonitor.java:220)
+	at org.eclipse.core.internal.events.ResourceDelta.accept(ResourceDelta.java:69)
+	at org.eclipse.core.internal.events.ResourceDelta.accept(ResourceDelta.java:80)
+	at org.eclipse.core.internal.events.ResourceDelta.accept(ResourceDelta.java:80)
+	at org.eclipse.core.internal.events.ResourceDelta.accept(ResourceDelta.java:80)
+	at org.eclipse.core.internal.events.ResourceDelta.accept(ResourceDelta.java:80)
+	at org.eclipse.core.internal.events.ResourceDelta.accept(ResourceDelta.java:80)
+	at org.eclipse.core.internal.events.ResourceDelta.accept(ResourceDelta.java:80)
+	at org.eclipse.core.internal.events.ResourceDelta.accept(ResourceDelta.java:80)
+	at org.eclipse.core.internal.events.ResourceDelta.accept(ResourceDelta.java:49)
+	at com.android.ide.eclipse.adt.internal.resources.manager.GlobalProjectMonitor$1.resourceChanged(GlobalProjectMonitor.java:501)
+	at org.eclipse.core.internal.events.NotificationManager$1.run(NotificationManager.java:291)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.NotificationManager.notify(NotificationManager.java:285)
+	at org.eclipse.core.internal.events.NotificationManager.broadcastChanges(NotificationManager.java:149)
+	at org.eclipse.core.internal.resources.Workspace.broadcastPostChange(Workspace.java:395)
+	at org.eclipse.core.internal.resources.Workspace.endOperation(Workspace.java:1530)
+	at org.eclipse.core.internal.events.AutoBuildJob.doBuild(AutoBuildJob.java:156)
+	at org.eclipse.core.internal.events.AutoBuildJob.run(AutoBuildJob.java:241)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+
+!ENTRY org.eclipse.ui 4 4 2012-06-10 14:49:43.597
+!MESSAGE Invalid preference page path: XML Syntax
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2012-06-10 14:52:47.926
+!MESSAGE loadAndParseRClass failed to find class de.lauer.andremote.R
+!STACK 0
+java.lang.UnsupportedClassVersionError: Unsupported major.minor version 51.0
+	at java.lang.ClassLoader.defineClass1(Native Method)
+	at java.lang.ClassLoader.defineClassCond(ClassLoader.java:631)
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:615)
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:465)
+	at com.android.ide.eclipse.adt.internal.resources.manager.ProjectClassLoader.loadFromProject(ProjectClassLoader.java:147)
+	at com.android.ide.eclipse.adt.internal.resources.manager.ProjectClassLoader.findClass(ProjectClassLoader.java:69)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:306)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:247)
+	at com.android.ide.eclipse.adt.internal.resources.manager.CompiledResourcesMonitor.loadAndParseRClass(CompiledResourcesMonitor.java:208)
+	at com.android.ide.eclipse.adt.internal.resources.manager.CompiledResourcesMonitor.fileChanged(CompiledResourcesMonitor.java:99)
+	at com.android.ide.eclipse.adt.internal.resources.manager.GlobalProjectMonitor$DeltaVisitor.visit(GlobalProjectMonitor.java:220)
+	at org.eclipse.core.internal.events.ResourceDelta.accept(ResourceDelta.java:69)
+	at org.eclipse.core.internal.events.ResourceDelta.accept(ResourceDelta.java:80)
+	at org.eclipse.core.internal.events.ResourceDelta.accept(ResourceDelta.java:80)
+	at org.eclipse.core.internal.events.ResourceDelta.accept(ResourceDelta.java:80)
+	at org.eclipse.core.internal.events.ResourceDelta.accept(ResourceDelta.java:80)
+	at org.eclipse.core.internal.events.ResourceDelta.accept(ResourceDelta.java:80)
+	at org.eclipse.core.internal.events.ResourceDelta.accept(ResourceDelta.java:80)
+	at org.eclipse.core.internal.events.ResourceDelta.accept(ResourceDelta.java:80)
+	at org.eclipse.core.internal.events.ResourceDelta.accept(ResourceDelta.java:49)
+	at com.android.ide.eclipse.adt.internal.resources.manager.GlobalProjectMonitor$1.resourceChanged(GlobalProjectMonitor.java:501)
+	at org.eclipse.core.internal.events.NotificationManager$1.run(NotificationManager.java:291)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.NotificationManager.notify(NotificationManager.java:285)
+	at org.eclipse.core.internal.events.NotificationManager.broadcastChanges(NotificationManager.java:149)
+	at org.eclipse.core.internal.resources.Workspace.broadcastPostChange(Workspace.java:395)
+	at org.eclipse.core.internal.resources.Workspace.endOperation(Workspace.java:1530)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2353)
+	at org.eclipse.core.internal.resources.Project.internalBuild(Project.java:597)
+	at org.eclipse.core.internal.resources.Project.build(Project.java:114)
+	at org.eclipse.jdt.internal.ui.util.CoreUtility$BuildJob.run(CoreUtility.java:161)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
