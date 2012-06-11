@@ -4,6 +4,7 @@ import java.awt.Point;
 import java.awt.Robot;
 import java.awt.Toolkit;
 import java.awt.event.InputEvent;
+import java.awt.event.KeyEvent;
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
 import java.io.FileInputStream;
@@ -13,8 +14,6 @@ import java.io.ObjectInputStream;
 import java.io.OutputStream;
 import java.net.Socket;
 
-import javax.swing.JDialog;
-import javax.swing.JOptionPane;
 
 public final class MyHandler implements Runnable {
 	//
@@ -104,7 +103,11 @@ public final class MyHandler implements Runnable {
 				//System.out.println("passphrase: "+pass);
 				if(pass.equals(AndRecieve.getPass())){
 					System.out.println("Welcome, Master!");
-					Runtime.getRuntime().exec("say \"Welcome Mr. Lauer!\"");
+					try{
+						Runtime.getRuntime().exec("say -v Daniel \"Welcome back sir!\""); //will work on my mac, fuck the rest.
+					}catch(Exception e){
+						//its not a mac 
+					}
 					//JOptionPane.showMessageDialog(null, "Nice to see you, Sir!", "Welcome Hagen!", JOptionPane.INFORMATION_MESSAGE,null);
 					masterFlag = true;
 				}
@@ -123,7 +126,19 @@ public final class MyHandler implements Runnable {
 					robot.mousePress(InputEvent.BUTTON3_DOWN_MASK);
 					robot.mouseRelease(InputEvent.BUTTON3_DOWN_MASK);
 					break;
-
+				case "arrowup":
+					break;
+				case "arrowdown":
+					break;
+				case "arrowleft":
+					robot.keyPress(KeyEvent.VK_LEFT);
+					robot.keyRelease(KeyEvent.VK_LEFT);
+					break;
+				case "arrowright":
+					robot.keyPress(KeyEvent.VK_RIGHT);
+					robot.keyRelease(KeyEvent.VK_RIGHT);
+					break;
+					
 				default:
 					//System.out.println(requestLine);
 

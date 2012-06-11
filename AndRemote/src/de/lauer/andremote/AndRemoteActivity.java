@@ -21,6 +21,8 @@ public class AndRemoteActivity extends Activity {
 	MyConnection con = null;
 	Button leftClick; 
 	Button rightClick;
+	Button arrowLeft;
+	Button arrowRight;
 
 	TextView tv;
 
@@ -36,8 +38,12 @@ public class AndRemoteActivity extends Activity {
 		String pass = getIntent().getStringExtra("pass");
 		
 		ctx = this;
+		
 		leftClick = (Button) findViewById(R.id.button1);
 		rightClick = (Button) findViewById(R.id.button2);
+		arrowLeft = (Button) findViewById(R.id.button3);
+		arrowRight = (Button) findViewById(R.id.button4);
+		
 		tv = (TextView) findViewById(R.id.textview);
 		
 		
@@ -54,7 +60,35 @@ public class AndRemoteActivity extends Activity {
 			setResult(10);
 			finish();
 		}
-
+		
+		arrowLeft.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				tv.setText("arrowLeft");
+				try {
+					con.sendCommand("arrowleft");
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+		});
+		
+		arrowRight.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				tv.setText("arrowRight");
+				try {
+					con.sendCommand("arrowright");
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+		});
+		
+		
+		
 		leftClick.setOnClickListener(new OnClickListener() {
 
 			@Override
@@ -82,6 +116,7 @@ public class AndRemoteActivity extends Activity {
 				}
 			}
 		});
+		
 		
 		
 		
@@ -131,12 +166,7 @@ public class AndRemoteActivity extends Activity {
 				Log.e(tag, "", e);
 			}
 			
-		}else{
-			tv.setText("movement to small");
 		}
-
-		
-
 		//tv.setText(oldx+" : "+oldx);
 		break;
 		
