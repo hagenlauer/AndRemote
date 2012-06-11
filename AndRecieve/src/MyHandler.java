@@ -95,6 +95,13 @@ public final class MyHandler implements Runnable {
 				socket.close();
 				flag =!flag;
 				AndRecieve.decrementConnectionCoutn();
+				if(!masterFlag)break;
+				System.out.println("Good bye, Master!");
+				try{
+					Runtime.getRuntime().exec("say -v Daniel \"Good bye sir!\""); //will work on my mac, fuck the rest.
+				}catch(Exception e){
+					//its not a mac, i dont care.
+				}
 				break;
 			}
 
@@ -106,56 +113,56 @@ public final class MyHandler implements Runnable {
 					try{
 						Runtime.getRuntime().exec("say -v Daniel \"Welcome back sir!\""); //will work on my mac, fuck the rest.
 					}catch(Exception e){
-						//its not a mac 
+						//its not a mac, i dont care.
 					}
 					//JOptionPane.showMessageDialog(null, "Nice to see you, Sir!", "Welcome Hagen!", JOptionPane.INFORMATION_MESSAGE,null);
 					masterFlag = true;
-				}
-			}else{
-
-				switch (requestLine) {
-				case "ohi":
-					break;
-				case "imback":
-					break;
-				case "left":
-					robot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
-					robot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
-					break;
-				case "right":
-					robot.mousePress(InputEvent.BUTTON3_DOWN_MASK);
-					robot.mouseRelease(InputEvent.BUTTON3_DOWN_MASK);
-					break;
-				case "arrowup":
-					break;
-				case "arrowdown":
-					break;
-				case "arrowleft":
-					robot.keyPress(KeyEvent.VK_LEFT);
-					robot.keyRelease(KeyEvent.VK_LEFT);
-					break;
-				case "arrowright":
-					robot.keyPress(KeyEvent.VK_RIGHT);
-					robot.keyRelease(KeyEvent.VK_RIGHT);
-					break;
-					
-				default:
-					//System.out.println(requestLine);
-
-					split = requestLine.split(":");
-					int x = Integer.valueOf(split[0]);
-					int y = Integer.valueOf(split[1]);
-
-					mouse = MouseInfo.getPointerInfo().getLocation();
-
-					//implement the corner stuff here:
-					moveMouse(x, y, mouse);
-					//				if(mouse.y > 10 && mouse.x > 10 && mouse.x < maxx-10 && mouse.y < maxy-10){
-					//					robot.mouseMove(mouse.x + x, mouse.y + y);
-					//				}
-					break;
+					continue;
 				}
 			}
+
+
+			switch (requestLine) {
+			case "ohi":
+				break;
+			case "imback":
+				break;
+			case "left":
+				robot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+				break;
+			case "leftup":
+				robot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+				break;
+			case "right":
+				robot.mousePress(InputEvent.BUTTON3_DOWN_MASK);
+				break;
+			case "rightup":
+				robot.mouseRelease(InputEvent.BUTTON3_DOWN_MASK);
+			case "arrowup":
+				robot.keyPress(KeyEvent.VK_UP);
+				robot.keyRelease(KeyEvent.VK_UP);
+				break;
+			case "arrowdown":
+				robot.keyPress(KeyEvent.VK_DOWN);
+				robot.keyRelease(KeyEvent.VK_DOWN);
+				break;
+			case "arrowleft":
+				robot.keyPress(KeyEvent.VK_LEFT);
+				robot.keyRelease(KeyEvent.VK_LEFT);
+				break;
+			case "arrowright":
+				robot.keyPress(KeyEvent.VK_RIGHT);
+				robot.keyRelease(KeyEvent.VK_RIGHT);
+				break;
+			default:
+				split = requestLine.split(":");
+				int x = Integer.valueOf(split[0]);
+				int y = Integer.valueOf(split[1]);
+				mouse = MouseInfo.getPointerInfo().getLocation();
+				moveMouse(x, y, mouse);
+				break;
+			}
+
 		}
 	}
 	private boolean moveMouse(int x, int y, Point mouse){

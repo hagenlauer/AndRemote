@@ -59,7 +59,7 @@ public class MyConnection {
         	ois.close();
         	oos.close();
             connection.close();
-        } catch (IOException e) {
+        } catch (Exception e) {
             //Log.i(tag,"Unable to close connection: " + e.toString());
         }
     }
