@@ -1,15 +1,21 @@
 package de.lauer.andremote;
 
+
 import java.io.IOException;
 import java.util.Timer;
 import java.util.TimerTask;
 
+
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -37,7 +43,7 @@ public class AndRemoteActivity extends Activity {
 	/** Called when the activity is first created. */
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
-		Log.i(tag, "onCreate");
+		//Log.i(tag, "onCreate");
 		super.onCreate(savedInstanceState);
 
 		setContentView(R.layout.main);
@@ -137,6 +143,7 @@ public class AndRemoteActivity extends Activity {
 			}
 		});
 
+
 		rightClick.setOnTouchListener(new OnTouchListener() {
 
 			@Override
@@ -222,36 +229,54 @@ public class AndRemoteActivity extends Activity {
 
 		return true;
 	}
+	public boolean onCreateOptionsMenu(Menu menu) {
+		super.onCreateOptionsMenu(menu);
+		getMenuInflater().inflate(R.menu.menu, menu);
+		return true;
+	}
+	private boolean flick = false;
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		Intent i;
+		switch (item.getItemId()) {
+		case R.id.send_alt_tabk:
+			try {
+				con.sendCommand("alt_tab");
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			break;
+		case R.id.showkeyboard:
+			i = new Intent(this, EnterText.class);
+			startActivity(i);
+			break;
+		case R.id.goto4chan:
+			i = new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.4chan.org/b/"));
+			startActivity(i);
+			break;
+		case R.id.leftdown:
+			try{
+				if(flick){
+					con.sendCommand("left");
+					flick = !flick;
+				}else{
+					con.sendCommand("leftup");
+					flick = !flick;
+				}
+			}catch (Exception e) {
+			}
+		}
+		return super.onOptionsItemSelected(item);
+	}
+
+
 }
 
-class Single{
+/*
+ *	never ever touch this again, it works, stay cool.
+ *	increase this if you failed to correct: 1
+ */
 
-	private static Single single = null;
-	private MyConnection connection = null;
-
-	private Single(){
-		super();
-	}
-	public static Single getInstance(){
-		if(single!=null)return single;
-		single = new Single();
-		single.connection = null;
-		return single;
-	}
-	public MyConnection getCon(){
-		return connection;
-	}
-	public void nullIt(){
-		single.connection = null;
-		connection = null;
-	}
-	public  void setCon(MyConnection c){
-		connection = c;
-	}
-}
-
-/*never ever touch this again, it works stay cool*/
-/*increase this if you failed to correct: 1*/
 class CloseCon extends TimerTask{
 
 	private static CloseCon task = null;

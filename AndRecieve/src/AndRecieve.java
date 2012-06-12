@@ -63,6 +63,7 @@ public class AndRecieve {
 		AndRecieve mySock = new AndRecieve();
 		try {
 			InetAddress local = InetAddress.getLocalHost();
+			System.out.println(local.getHostAddress()+":"+local.getHostName());
 			JOptionPane.showMessageDialog(null, local.getHostAddress(), "Your IP Adress, sir", JOptionPane.INFORMATION_MESSAGE,null);
 		} catch (Exception e) {
 			//JOptionPane.showMessageDialog(null, "Yes, you did, not me.", "You messed something up", JOptionPane.INFORMATION_MESSAGE,null);

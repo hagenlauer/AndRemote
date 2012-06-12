@@ -26,6 +26,9 @@
             </intent-filter>
             
         </activity>
+        <activity 
+            android:name=".EnterText"
+            android:label="@string/app_name"></activity>
         <activity
             android:name=".AndRemoteActivity"
             android:label="@string/app_name" >
