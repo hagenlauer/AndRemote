@@ -1,7 +1,7 @@
 AndRemote
 =========
 
-A remote controll application for Android 2.3,
+A remote application for Android 2.3,
 allows mouse movement, left and right klicks.
 Install the .apk,
 run the .jar file on your local System
