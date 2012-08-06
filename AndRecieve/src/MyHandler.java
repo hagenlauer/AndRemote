@@ -117,6 +117,7 @@ public final class MyHandler implements Runnable {
 			}
 
 			if(requestLine.startsWith("pass:")){
+				System.out.println("pass recieved");
 				String pass = requestLine.substring(5, requestLine.length());
 				//System.out.println("passphrase: "+pass);
 				if(pass.equals(AndRecieve.getPass())){
@@ -146,6 +147,7 @@ public final class MyHandler implements Runnable {
 
 			switch (requestLine) {
 			case "ohi":
+				System.out.println("ohi recieved");
 				break;
 			case "imback":
 				break;

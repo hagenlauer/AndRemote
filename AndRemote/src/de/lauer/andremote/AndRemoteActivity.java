@@ -14,6 +14,7 @@ import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
@@ -82,11 +83,7 @@ public class AndRemoteActivity extends Activity {
 			setResult(10);
 			finish();
 		}
-		//Single.getInstance().setCon(null);
-		if(Single.getInstance().getCon() == null){
-			Toast.makeText(this, "singe con != null", Toast.LENGTH_SHORT).show();
-		}
-
+		
 
 		arrowLeft.setOnClickListener(new OnClickListener() {
 
@@ -234,6 +231,35 @@ public class AndRemoteActivity extends Activity {
 		getMenuInflater().inflate(R.menu.menu, menu);
 		return true;
 	}
+	@Override
+	public boolean dispatchKeyEvent(KeyEvent event) {
+	    int action = event.getAction();
+	    int keyCode = event.getKeyCode();
+	        switch (keyCode) {
+	        case KeyEvent.KEYCODE_VOLUME_DOWN:
+	            if (action == KeyEvent.ACTION_DOWN) {
+	                try {
+						con.sendCommand("arrowdown");
+					} catch (IOException e) {
+						e.printStackTrace();
+					}
+	            }
+	            return true;
+	        case KeyEvent.KEYCODE_VOLUME_UP:
+	        	if (action == KeyEvent.ACTION_DOWN) {
+	                try {
+						con.sendCommand("arrowup");
+					} catch (IOException e) {
+						e.printStackTrace();
+					}
+	            }
+	            return true;
+	        default:
+	            return super.dispatchKeyEvent(event);
+	        }
+	    }
+	
+	
 	private boolean flick = false;
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
