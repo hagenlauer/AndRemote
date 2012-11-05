@@ -8,7 +8,7 @@ public class AndRecieve {
 	ServerSocket server=null;
 	Socket client=null;
 
-	private static final String pass = "ironman";
+	private static final String pass = "youexpectedapass?tellmeeverythingaboutthat"; //read it from a pass file, please.
 	
 	private static Object lock = new Object();
 
